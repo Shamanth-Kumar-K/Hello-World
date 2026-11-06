@@ -13,13 +13,15 @@ public class StudentManager {
 
     public void addStudent(Student student) {
         if(studentCount<students.length){
-            if(student!=null) {
-                if (isIdExists(student.getId())) {
+            if(student==null) {
+                System.out.println("Student is null. Insertion Failed...");
+                return;
+            }
+            if (isIdExists(student.getId())) {
                     System.out.println("The Student Id is already exists !");
                     System.out.println("Failed to insert the student. Try again...");
                     return;
                 }
-            }
             students[studentCount] = student;
             studentCount++;
             System.out.println("Successfully inserted Student !");
@@ -82,10 +84,10 @@ public class StudentManager {
         for(int i=0; i<studentCount; i++){
             Student s = students[i];
             if(s.getId()==id){
-                s.setName(name);
                 s.setAge(age);
-                s.setCourse(course);
                 s.setMarks(marks);
+                s.setName(name);
+                s.setCourse(course);
                 System.out.println("Student details updated successfully!");
                 return;
             }

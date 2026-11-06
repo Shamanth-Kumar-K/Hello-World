@@ -68,8 +68,8 @@ public class Main {
                 default:
                     System.out.println("Invalid Entry of Choice. Try again with valid choice");
             }
-            sc.close();
         }while (choice!=6);
+        sc.close();
 
 
     }
