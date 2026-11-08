@@ -4,7 +4,7 @@ public class Main {
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         StudentManager manager = new StudentManager(5);
-        int choice,id,age;
+        int choice = 0,id,age;
         String name, course;
         double marks;
         do {
@@ -17,7 +17,12 @@ public class Main {
             System.out.println("6. Exit Application");
             System.out.println();
             System.out.println("Enter your choice: ");
-            choice = Integer.parseInt(sc.nextLine());
+            try {
+                choice = Integer.parseInt(sc.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter a valid number.");
+                continue;
+            }
 
             //switch
             switch (choice){
