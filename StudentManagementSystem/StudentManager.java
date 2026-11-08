@@ -84,10 +84,8 @@ public class StudentManager {
         for(int i=0; i<studentCount; i++){
             Student s = students[i];
             if(s.getId()==id){
-                s.setAge(age);
-                s.setMarks(marks);
-                s.setName(name);
-                s.setCourse(course);
+                Student temp = new Student(id,name,age,course,marks);
+                s = temp;
                 System.out.println("Student details updated successfully!");
                 return;
             }
