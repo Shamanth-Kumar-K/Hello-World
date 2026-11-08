@@ -50,7 +50,7 @@ public class Student {
     }
 
     public void setMarks(double marks) {
-        if(marks>0 && marks<=100){
+        if(marks>=0 && marks<=100){
             this.marks = marks;
         }else{
             throw new IllegalArgumentException("Invalid Marks. Marks should be greater than 0 and less than or equal to 100.");
