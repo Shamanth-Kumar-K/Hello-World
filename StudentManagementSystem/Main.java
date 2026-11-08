@@ -17,59 +17,59 @@ public class Main {
             System.out.println("6. Exit Application");
             System.out.println();
             System.out.println("Enter your choice: ");
-            try {
-                choice = Integer.parseInt(sc.nextLine());
-            } catch (NumberFormatException e) {
-                System.out.println("Please enter a valid number.");
-                continue;
-            }
+            choice = readInt(sc);
 
             //switch
             switch (choice){
                 case 1:
                     System.out.println("Enter the Student Details to add");
                     System.out.println("Enter the Student id: ");
-                    id = Integer.parseInt(sc.nextLine());
+                    id = readInt(sc);
                     System.out.println("Enter the Student name: ");
                     name = sc.nextLine();
                     System.out.println("Enter the Student age: ");
-                    age = Integer.parseInt(sc.nextLine());
+                    age = readInt(sc);
                     System.out.println("Enter the Course name: ");
                     course = sc.nextLine();
                     System.out.println("Enter the Student marks: ");
                     marks = Double.parseDouble(sc.nextLine());
                     manager.addStudent(new Student(id,name,age,course,marks));
-
                     break;
+
                 case 2:
                     manager.viewAllStudents();
                     break;
+
                 case 3:
                     System.out.println("Enter the Student ID to Search");
-                    id = Integer.parseInt(sc.nextLine());
+                    id = readInt(sc);
                     manager.searchStudent(id);
                     break;
+
                 case 4:
                     System.out.println("Enter the Student id: ");
-                    id = Integer.parseInt(sc.nextLine());
+                    id = readInt(sc);
                     System.out.println("Enter the Student name to update: ");
                     name = sc.nextLine();
                     System.out.println("Enter the Student age to update: ");
-                    age = Integer.parseInt(sc.nextLine());
+                    age = readInt(sc);
                     System.out.println("Enter the Course name to update: ");
                     course = sc.nextLine();
                     System.out.println("Enter the Student marks to update: ");
                     marks = Double.parseDouble(sc.nextLine());
                     manager.updateStudent(id,name,age,course,marks);
                     break;
+
                 case 5:
                     System.out.println("Enter the Student ID to Delete");
-                    id = Integer.parseInt(sc.nextLine());
+                    id = readInt(sc);
                     manager.deleteStudent(id);
                     break;
+
                 case 6:
                     System.out.println("Exiting from Application .........\nDone.");
                     break;
+                    
                 default:
                     System.out.println("Invalid Entry of Choice. Try again with valid choice");
             }
@@ -78,4 +78,14 @@ public class Main {
 
 
     }
+    public static int readInt(Scanner sc) {
+                while(true){
+                    try {
+                        return readInt(sc);
+                    } catch (NumberFormatException e) {
+                        System.out.println("Invalid input. Enter a valid integer.");
+                        continue;
+                    }
+                }
+            }
 }
