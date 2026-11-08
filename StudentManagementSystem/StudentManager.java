@@ -84,10 +84,24 @@ public class StudentManager {
         for(int i=0; i<studentCount; i++){
             Student s = students[i];
             if(s.getId()==id){
-                Student temp = new Student(id,name,age,course,marks);
-                s = temp;
-                System.out.println("Student details updated successfully!");
-                return;
+                try {
+                    Student temp = new Student(id, name, age, course, marks);
+                    s.setName(temp.getName());
+                    try{
+                    s.setAge(temp.getAge());
+                    }catch(IllegalArgumentException e){
+                        System.out.println(e.getMessage());
+                    }
+                    s.setCourse(temp.getCourse());
+                    s.setMarks(temp.getMarks());
+
+                    System.out.println("Student details updated successfully!");
+                    return;
+
+                } catch (IllegalArgumentException e) {
+                    System.out.println("Update failed: " + e.getMessage());
+                    return;
+                }
             }
         }
         System.out.println("No student found");

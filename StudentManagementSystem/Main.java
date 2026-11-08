@@ -32,8 +32,13 @@ public class Main {
                     System.out.println("Enter the Course name: ");
                     course = sc.nextLine();
                     System.out.println("Enter the Student marks: ");
-                    marks = Double.parseDouble(sc.nextLine());
-                    manager.addStudent(new Student(id,name,age,course,marks));
+                    marks = readDouble(sc);
+                    try{
+                        manager.addStudent(new Student(id,name,age,course,marks));
+                    }catch(Exception e){
+                        System.out.println(e.getMessage());
+                        System.out.println("Failed to add Student !....");
+                    }
                     break;
 
                 case 2:
@@ -56,7 +61,7 @@ public class Main {
                     System.out.println("Enter the Course name to update: ");
                     course = sc.nextLine();
                     System.out.println("Enter the Student marks to update: ");
-                    marks = Double.parseDouble(sc.nextLine());
+                    marks = readDouble(sc);
                     manager.updateStudent(id,name,age,course,marks);
                     break;
 
@@ -65,11 +70,11 @@ public class Main {
                     id = readInt(sc);
                     manager.deleteStudent(id);
                     break;
-
+                    
                 case 6:
                     System.out.println("Exiting from Application .........\nDone.");
                     break;
-                    
+
                 default:
                     System.out.println("Invalid Entry of Choice. Try again with valid choice");
             }
@@ -79,13 +84,28 @@ public class Main {
 
     }
     public static int readInt(Scanner sc) {
-                while(true){
-                    try {
-                        return readInt(sc);
-                    } catch (NumberFormatException e) {
-                        System.out.println("Invalid input. Enter a valid integer.");
-                        continue;
-                    }
-                }
+        while(true){
+            try {
+                return Integer.parseInt(sc.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Enter a valid integer.");
+                continue;
             }
+        }
+    }
+    public static double readDouble(Scanner sc) {
+        while(true){
+            try {
+                double value = Double.parseDouble(sc.nextLine());
+                if (Double.isFinite(value)) {
+                    return value;
+                }
+                System.out.println("Enter a finite number.");
+                
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Enter a valid double.");
+                continue;
+            }
+        }
+    }
 }

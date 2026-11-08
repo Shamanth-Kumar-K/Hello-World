@@ -33,8 +33,9 @@ public class Student {
         if(age>0 && age<100){
             this.age = age;
         }else{
-            throw new IllegalArgumentException("Invalid Age.");
+            throw new IllegalArgumentException("Invalid age.");
         }
+        
     }
 
     public String getCourse() {
@@ -53,8 +54,7 @@ public class Student {
         if(marks>=0 && marks<=100){
             this.marks = marks;
         }else{
-            throw new IllegalArgumentException("Invalid Marks. Marks should be greater than 0 and less than or equal to 100.");
+            throw new IllegalArgumentException("Invalid Marks. Marks should be greater or equal to 0 and less than or equal to 100.");
         }
-
     }
 }
